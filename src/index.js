@@ -45,6 +45,10 @@ export const router = createBrowserRouter([
         element: <VehicleDetails /> 
       },
       {
+        path: "inventory/add-new",
+        element: <AddVehicle />
+      },
+      {
         path: "photos",
         element: <Photos />
       },

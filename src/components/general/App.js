@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import Navbar from './Navbar';
 import { Outlet } from 'react-router-dom';
+import '../index.css';
 
 const App = () => {
   const [ profileData, setProfileData ] = useState({});

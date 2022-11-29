@@ -1,15 +1,12 @@
 import { useOutletContext, Link } from "react-router-dom";
 
 const Vehicles = () => {
-
   const {vehicleObj: [{vehicles}, setVehicleData]} = useOutletContext();
-
-  console.log(vehicles)
 
   return (
     <div>
       <p> Table for vehicles </p>
-      <button>Add Vehicle</button>
+      <Link to="./add-new"><button>Add Vehicle</button></Link>
       <p>Sort by (cell-forward/backward)</p>
       <p>Do ADD VEHICLE and EDIT VEHICLE look the same?</p>
       <table>

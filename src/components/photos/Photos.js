@@ -3,8 +3,6 @@ import { useOutletContext, Link } from 'react-router-dom';
 const Photos = () => {
   const {photoObj: [photoData, setPhotoData]} = useOutletContext();
 
-  console.log(photoData)
-
   return (
     <div>
       Photos
