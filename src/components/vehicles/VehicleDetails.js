@@ -58,7 +58,7 @@ const VehicleDetails = () => {
         const response = await fetch(`
         https://autoplex-webservice.onrender.com/api/vehicles/${id}`,
         {
-          header: {
+          headers: {
             "Content-Type": "application/json"
           }
         });

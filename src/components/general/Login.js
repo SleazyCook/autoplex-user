@@ -12,7 +12,7 @@ const Login = () => {
 
     try {
       const response = await fetch(
-        'https://autoplex-webservice.onrender.com/api/vehicles/login',
+        'https://autoplex-webservice.onrender.com/api/users/login',
         {
           method: "POST",
           headers: {
