@@ -1,25 +1,25 @@
 import {createRoot} from 'react-dom/client';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
-import App from './components/App';
-import ErrorPage from './components/ErrorPage';
-import Home from './components/Home';
-import Login from './components/Login';
-import Register from './components/Register';
+import App from './components/general/App';
+import ErrorPage from './components/general/ErrorPage';
+import Home from './components/general/Home';
+import Login from './components/general/Login';
+import Register from './components/general/Register';
 
-import Vehicles from './components/Vehicles';
-import AddVehicle from './components/AddVehicle';
-import VehicleData from './components/VehicleData';
+import Vehicles from './components/vehicles/Vehicles';
+import AddVehicle from './components/vehicles/AddVehicle';
+import VehicleData from './components/vehicles/VehicleData';
 
-import Photos from './components/Photos';
+import Types from './components/vehicles/Types';
+import AddType from './components/vehicles/AddType';
+import UpdateType from './components/vehicles/UpdateType';
 
-import Types from './components/Types';
-import AddType from './components/AddType';
-import UpdateType from './components/UpdateType';
+import Photos from './components/photos/Photos';
 
-import Reviews from './components/Reviews';
-import AddReview from './components/AddReview';
-import UpdateReview from './components/UpdateReview';
+import Reviews from './components/reviews/Reviews';
+import AddReview from './components/reviews/AddReview';
+import UpdateReview from './components/reviews/UpdateReview';
 
 const appElement = document.getElementById('app');
 const root = createRoot(appElement);
