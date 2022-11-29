@@ -34,7 +34,9 @@ const App = () => {
       <Navbar />
       <br />
       <Outlet context ={{
-        vehicleObj: [vehicleData, setVehicleData]
+        vehicleObj: [vehicleData, setVehicleData],
+        profileObj: [profileData, setProfileData],
+        loggedInObj: [loggedIn, setLoggedIn]
       }} />
       <br />
 
