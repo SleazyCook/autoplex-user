@@ -1,61 +1,43 @@
-import React from 'react';
+import { useOutletContext} from 'react-router-dom';
 
 const Reviews = () => {
+  const {reviewObj: [{reviews}, setReviewData]} = useOutletContext();
+
   return (
     <div>
       Reviews
       <p>Sort by (cell-forward/backward)</p>
       <table>
-        <tr>
-          <th>id</th>
-          <th>customer name</th>
-          <th>quote</th>
-          <th>imgAlt</th>
-          <th>imgUrl</th>
-          <th>Preivew Image</th>
-          <th>isActive</th>
-          <th>Edit</th>
-        </tr>
-        <tr>
-          <td>1</td>
-          <td>Drewford</td>
-          <td>I like it a lot</td>
-          <td>a beautiful man</td>
-          <td>hugePenis.png</td>
-          <td><button>Image</button></td>
-          <td>true</td>
-          <td><button>EDIT</button></td>
-        </tr>
-        <tr>
-          <td>1</td>
-          <td>Drewford</td>
-          <td>I like it a lot</td>
-          <td>a beautiful man</td>
-          <td>hugePenis.png</td>
-          <td><button>Image</button></td>
-          <td>true</td>
-          <td><button>EDIT</button></td>
-        </tr>
-        <tr>
-          <td>1</td>
-          <td>Drewford</td>
-          <td>I like it a lot</td>
-          <td>a beautiful man</td>
-          <td>hugePenis.png</td>
-          <td><button>Image</button></td>
-          <td>true</td>
-          <td><button>EDIT</button></td>
-        </tr>
-        <tr>
-          <td>1</td>
-          <td>Drewford</td>
-          <td>I like it a lot</td>
-          <td>a beautiful man</td>
-          <td>hugePenis.png</td>
-          <td><button>Image</button></td>
-          <td>true</td>
-          <td><button>EDIT</button></td>
-        </tr>
+        <thead>
+          <tr>
+            <th>id</th>
+            <th>customer name</th>
+            <th>quote</th>
+            <th>imgAlt</th>
+            <th>imgUrl</th>
+            <th>Preivew Image</th>
+            <th>Edit</th>
+          </tr>
+        </thead>
+        <tbody>
+          {
+            reviews && !!reviews.length && reviews.map((review, idx) => {
+              return (
+                
+                <tr key={idx}>
+                  <td>{review.id}</td>
+                  <td>{review.name}</td>
+                  <td>{review.quote}</td>
+                  <td>{review.imgAlt}</td>
+                  <td>{review.imgUrl}</td>
+                  <td><button>Preview</button></td>
+                  <td><button>Edit</button></td>
+                </tr>
+
+              )
+            })
+          }
+        </tbody>
       </table>
     </div>
   )

@@ -6,6 +6,8 @@ const App = () => {
   const [ profileData, setProfileData ] = useState({});
   const [ loggedIn, setLoggedIn ] = useState(false);
   const [ vehicleData, setVehicleData ] = useState([]);
+  const [ photoData, setPhotoData ] = useState([]);
+  const [ reviewData, setReviewData ] = useState([]);
 
   useEffect(() => {
     async function fetchVehicleData() {
@@ -25,6 +27,43 @@ const App = () => {
       }
     }
     fetchVehicleData();
+
+    async function fetchPhotoData() {
+      try {
+        const response = await fetch(
+          'https://autoplex-webservice.onrender.com/api/photos',
+          {
+            headers: {
+              "Content-Type": "application/json"
+            }
+          })
+
+          const pData = await response.json();
+          setPhotoData(pData);
+      } catch (error) {
+        console.log(error);
+      }
+    }
+    fetchPhotoData();
+
+    async function fetchReviewData() {
+      try {
+        const response = await fetch(
+          'https://autoplex-webservice.onrender.com/api/reviews',
+          {
+            headers: {
+              "Content-Type": "application/json"
+            }
+          })
+
+          const rData = await response.json();
+          setReviewData(rData);
+      } catch (error) {
+        console.log(error);
+      }
+    }
+    fetchReviewData();
+    
   }, []);
 
   return (
@@ -34,9 +73,11 @@ const App = () => {
       <Navbar />
       <br />
       <Outlet context ={{
-        vehicleObj: [vehicleData, setVehicleData],
         profileObj: [profileData, setProfileData],
-        loggedInObj: [loggedIn, setLoggedIn]
+        loggedInObj: [loggedIn, setLoggedIn],
+        vehicleObj: [vehicleData, setVehicleData],
+        photoObj: [photoData, setPhotoData],
+        reviewObj: [reviewData, setReviewData]
       }} />
       <br />
 
