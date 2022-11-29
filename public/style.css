@@ -2,3 +2,16 @@
   color: red;
   background-color: black;
 }
+
+table, th, td {
+  border: 1px solid white;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+td button {
+  background-color: white;
+}

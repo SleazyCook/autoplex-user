@@ -6,12 +6,17 @@ import ErrorPage from './components/ErrorPage';
 import Home from './components/Home';
 import Login from './components/Login';
 import Register from './components/Register';
+
 import Vehicles from './components/Vehicles';
 import AddVehicle from './components/AddVehicle';
-import UpdateVehicle from './components/UpdateVehicle';
+import VehicleData from './components/VehicleData';
+
+import Photos from './components/Photos';
+
 import Types from './components/Types';
 import AddType from './components/AddType';
 import UpdateType from './components/UpdateType';
+
 import Reviews from './components/Reviews';
 import AddReview from './components/AddReview';
 import UpdateReview from './components/UpdateReview';
@@ -32,6 +37,14 @@ export const router = createBrowserRouter([
       {
         path: "inventory",
         element: <Vehicles />
+      },
+      {
+        path: "inventory/:id/edit",
+        element: <VehicleData /> 
+      },
+      {
+        path: "photos",
+        element: <Photos />
       },
       {
         path: "reviews",

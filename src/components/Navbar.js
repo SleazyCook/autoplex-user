@@ -10,6 +10,8 @@ const Navbar = () => {
 
         <Link to="inventory">Inventory</Link>
 
+        <Link to="photos">Car Photos</Link>
+
         <Link to="reviews">Reviews</Link>
 
       </nav>
