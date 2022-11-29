@@ -14,29 +14,26 @@ const Vehicles = () => {
       <table>
         <thead>
           <tr>
-            <th>id</th>
-            <th>typeId</th>
-            <th>make</th>
-            <th>model</th>
-            <th>submodel</th>
-            <th>engine</th>
-            <th>year</th>
-            <th>exteriorColor</th>
-            <th>interiorColor</th>
-            <th>mileage</th>
-            <th>VIN</th>
-            <th>stockNumber</th>
-            <th>retailPrice</th>
-            <th>inStock</th>
-            <th>isFeatured</th>
-            <th>isActive</th>
+            <th>Id</th>
+            <th>Make</th>
+            <th>Model</th>
+            <th>Year</th>
+            <th>Details</th>
           </tr>
         </thead>
         <tbody>
         {
           vehicles && !!vehicles.length && vehicles.map((vehicle, idx) => {
             return (
-              <VehicleData vehicle = {vehicle} key={idx}/>
+              
+              <tr key={idx}>
+                <td>{vehicle.id}</td>
+                <td>{vehicle.make}</td>
+                <td>{vehicle.model}</td>
+                <td>{vehicle.year}</td>
+                <td><Link to={`./${vehicle.id}`}><button>View</button></Link></td>
+              </tr>
+
             )
           })
         }
@@ -47,3 +44,12 @@ const Vehicles = () => {
 }
 
 export default Vehicles;
+
+
+// {
+//   vehicles && !!vehicles.length && vehicles.map((vehicle, idx) => {
+//     return (
+//       <VehicleData vehicle = {vehicle} key={idx}/>
+//     )
+//   })
+// }

@@ -8,6 +8,7 @@ import Login from './components/general/Login';
 import Register from './components/general/Register';
 
 import Vehicles from './components/vehicles/Vehicles';
+import VehicleDetails from './components/vehicles/VehicleDetails';
 import AddVehicle from './components/vehicles/AddVehicle';
 import VehicleData from './components/vehicles/VehicleData';
 
@@ -34,13 +35,14 @@ export const router = createBrowserRouter([
         index: true,
         element: <Home />
       },
+      // Vehicle Inventory
       {
         path: "inventory",
         element: <Vehicles />
       },
       {
-        path: "inventory/:id/edit",
-        element: <VehicleData /> 
+        path: "inventory/:id",
+        element: <VehicleDetails /> 
       },
       {
         path: "photos",
