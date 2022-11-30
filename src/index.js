@@ -17,6 +17,8 @@ import AddType from './components/vehicles/AddType';
 import UpdateType from './components/vehicles/UpdateType';
 
 import Photos from './components/photos/Photos';
+import PhotoDetails from './components/photos/PhotoDetails';
+import AddPhoto from './components/photos/AddPhoto';
 
 import Reviews from './components/reviews/Reviews';
 import AddReview from './components/reviews/AddReview';
@@ -35,6 +37,8 @@ export const router = createBrowserRouter([
         index: true,
         element: <Home />
       },
+
+
       // Vehicle Inventory
       {
         path: "inventory",
@@ -48,14 +52,31 @@ export const router = createBrowserRouter([
         path: "inventory/add-new",
         element: <AddVehicle />
       },
+
+
+      // Photo Tables
       {
         path: "photos",
         element: <Photos />
       },
       {
+        path: "photos/:id",
+        element: <PhotoDetails />
+      },
+      {
+        path: "photos/add-new",
+        element: <AddPhoto />
+      },
+
+
+      // Reviews Tables
+      {
         path: "reviews",
         element: <Reviews />
       },
+
+      
+      // Types Tables
       {
         path: "types",
         element: <Types />

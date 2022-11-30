@@ -85,7 +85,7 @@ const VehicleDetails = () => {
       const editResponse = await fetch ('https://autoplex-webservice.onrender.com/api/vehicles')
       const editData = await editResponse.json();
       setVehicle(editData);
-      setIsEdit(false)
+      setIsEdit(false);
 
     } catch (error) {
       console.log(error);
@@ -103,8 +103,7 @@ const VehicleDetails = () => {
   if (vehicle.id) { 
     return (
       <div>
-        <button onClick={handleEdit}>Start Edit</button>
-        <button onClick={submitEdit}>Submit Edit</button>
+        {!isEdit ? <button onClick={handleEdit}>Edit</button> : <button onClick={submitEdit}>Submit Changes</button>}
         <table>
           <tr>
             <th>Vehice ID</th>

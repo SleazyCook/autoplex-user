@@ -9,6 +9,9 @@ const Photos = () => {
       <p>Sort by (cell-forward/backward)</p>
       <p>When click on preview, open image up</p>
       <p>Preivew button toggles to delete on edit?</p>
+
+      <Link to="./add-new"><button>Add Photo</button></Link>
+      
       <table>
         <thead>
           <tr>
@@ -16,8 +19,7 @@ const Photos = () => {
             <th>vehicleId</th>
             <th>alt</th>
             <th>url</th>
-            <th>Preview</th>
-            <th>Edit</th>
+            <th>Details</th>
           </tr>
         </thead>
         <tbody>
@@ -30,8 +32,7 @@ const Photos = () => {
                   <td>{photo.vehicleId}</td>
                   <td>{photo.alt}</td>
                   <td>{photo.url}</td>
-                  <td><button>Preview</button></td>
-                  <td><button>Edit</button></td>
+                  <td><Link to={`./${photo.id}`}><button>View</button></Link></td>
                 </tr>
 
               )

@@ -10,6 +10,8 @@ const App = () => {
   const [ photoData, setPhotoData ] = useState([]);
   const [ reviewData, setReviewData ] = useState([]);
 
+  console.log(vehicleData)
+
   useEffect(() => {
     async function fetchVehicleData() {
       try {
