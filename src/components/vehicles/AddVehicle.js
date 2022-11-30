@@ -168,11 +168,11 @@ const AddVehicle = () => {
         <br />
 
         <label>In Stock</label>
-        <input value={inStock} onChange={updateInStock} type="checkbox"></input>
+        <input checked={inStock} onChange={updateInStock} type="checkbox"></input>
         <br />
 
         <label>Featured</label>
-        <input value={isFeatured} onChange={updateIsFeatured} type="checkbox"></input>
+        <input checked={isFeatured} onChange={updateIsFeatured} type="checkbox"></input>
         <br />
 
         <button type="submit">Add Vehicle</button>

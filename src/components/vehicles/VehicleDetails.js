@@ -8,41 +8,24 @@ const VehicleDetails = () => {
   const [vehicle, setVehicle] = useState({});
   const { id } = useParams();
 
-  console.log(id)
-
-  // default values
-  const [typeId, setTypeId] = useState(vehicle.id);
-  const [make, setMake] = useState("");
-  const [model, setModel] = useState("");
-  const [submodel, setSubmodel] = useState("");
-  const [engine, setEngine] = useState("");
-  const [year, setYear] = useState("");
-  const [exteriorColor, setExteriorColor] = useState("");
-  const [interiorColor, setInteriorColor] = useState("");
-  const [mileage, setMileage] = useState("");
-  const [vin, setVin] = useState("");
-  const [stockNumber, setStockNumber] = useState("");
-  const [retailPrice, setRetailPrice] = useState("");
-  const [inStock, setInStock] = useState("");
-  const [isFeatured, setIsFeatured] = useState("");
-
-  // input values
-  const [inputTypeId, setInputTypeId] = useState("");
-  const [inputMake, setInputMake] = useState("");
-  const [inputModel, setInputModel] = useState("");
-  const [inputSubmodel, setInputSubmodel] = useState("");
-  const [inputEngine, setInputEngine] = useState("");
-  const [inputYear, setInputYear] = useState("");
-  const [inputExteriorColor, setInputExteriorColor] = useState("");
-  const [inputInteriorColor, setInputInteriorColor] = useState("");
-  const [inputMileage, setInputMileage] = useState("");
-  const [inputVin, setInputVin] = useState("");
-  const [inputStockNumber, setInputStockNumber] = useState("");
-  const [inputRetailPrice, setInputRetailPrice] = useState("");
-  const [inputInStock, setInputInStock] = useState("");
-  const [inputIsFeatured, setInputIsFeatured] = useState("");
-
   const [isEdit, setIsEdit] = useState(false);
+
+  const [inputState, setInputState] = useState({
+    typeId: "",
+    make: "",
+    model: "",
+    submodel: "",
+    engine: "",
+    year: "",
+    exteriorColor: "",
+    interiorColor: "",
+    mileage: "",
+    vin: "",
+    stockNumber: "",
+    retailPrice: "",
+    inStock: false,
+    isFeatured: false
+  });
 
   function handleEdit(id) {
     setIsEdit(true);
@@ -74,46 +57,54 @@ const VehicleDetails = () => {
   }, []);
 
 
-  // async function submitEdit (event) {
-  //   event.preventDefault();
-  //   try {
-  //     const response = await fetch (`
-  //     https://autoplex-webservice.onrender.com/api/vehicles/${props.vehicle.id}`,
-  //     {
-  //       method: "PATCH",
-  //       headers: {
-  //         "Content-Type": "application/json"
-  //       },
-  //       body: JSON.stringify({
-  //         typeId,
-  //         make,
-  //         model,
-  //         submodel,
-  //         engine,
-  //         year,
-  //         exteriorColor,
-  //         interiorColor,
-  //         mileage,
-  //         vin,
-  //         stockNumber,
-  //         retailPrice,
-  //         inStock,
-  //         isFeatured
-  //       })
-  //     })
+  async function submitEdit (event) {
+    event.preventDefault();
 
-  //     // const editResponse = await fetch ('https://autoplex-webservice.onrender.com/api/vehicles')
-  //     // const editData = await editResponse.json();
-  //     // setVehicles(editResponse.data);
+    const updateFields = {}
+    //check to see if a key value is defined during edit, if empty do nothing
+    Object.keys(inputState).forEach((key) => {
+      if (inputState[key]) {
+        updateFields[key] = inputState[key]
+      }
+    })
 
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // }
-  
+    try {
+      const response = await fetch (`
+      https://autoplex-webservice.onrender.com/api/vehicles/`,
+      {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          id,
+          fields: updateFields
+        })
+      })
+
+      const editResponse = await fetch ('https://autoplex-webservice.onrender.com/api/vehicles')
+      const editData = await editResponse.json();
+      setVehicle(editData);
+      setIsEdit(false)
+
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  function handleChange(event) {
+    if (event.target.type == "checkbox") {
+      setInputState({...inputState, [event.target.name]: event.target.checked});
+    } else {
+      setInputState({...inputState, [event.target.name]: event.target.value});
+    }
+  };
+
   if (vehicle.id) { 
     return (
       <div>
+        <button onClick={handleEdit}>Start Edit</button>
+        <button onClick={submitEdit}>Submit Edit</button>
         <table>
           <tr>
             <th>Vehice ID</th>
@@ -121,59 +112,59 @@ const VehicleDetails = () => {
           </tr>
           <tr>
             <th>Type Id</th>
-            <td>{!isEdit ? vehicle.typeId : <input value={inputTypeId} type="text" placeholder={vehicle.typeId}></input>}</td>
+            <td>{!isEdit ? vehicle.typeId : <input value={inputState.typeId}  onChange={handleChange} name="typeId" type="text" placeholder={vehicle.typeId}></input>}</td>
           </tr>
           <tr>
             <th>Make</th>
-            <td>{!isEdit ? vehicle.make : <input value={inputMake} placeholder={vehicle.make}></input>}</td>
+            <td>{!isEdit ? vehicle.make : <input value={inputState.make}  onChange={handleChange} name="make" placeholder={vehicle.make}></input>}</td>
           </tr>
           <tr>
           <th>Model</th>
-            <td>{!isEdit ? vehicle.model : <input value={inputModel} placeholder={vehicle.model}></input>}</td>
+            <td>{!isEdit ? vehicle.model : <input value={inputState.model}  onChange={handleChange} name="model" placeholder={vehicle.model}></input>}</td>
           </tr>
           <tr>
             <th>Submodel</th>
-            <td>{!isEdit ? vehicle.submodel : <input value={inputSubmodel} placeholder={vehicle.submodel}></input>}</td>
+            <td>{!isEdit ? vehicle.submodel : <input value={inputState.submodel}  onChange={handleChange} name="submodel" placeholder={vehicle.submodel}></input>}</td>
           </tr>
           <tr>
             <th>Engine</th>
-            <td>{!isEdit ? vehicle.engine : <input value={inputEngine} placeholder={vehicle.engine}></input>}</td>
+            <td>{!isEdit ? vehicle.engine : <input value={inputState.engine}  onChange={handleChange} name="engine" placeholder={vehicle.engine}></input>}</td>
           </tr>
           <tr>
             <th>Year</th>
-            <td>{!isEdit ? vehicle.year : <input value={inputYear} placeholder={vehicle.year}></input>}</td>
+            <td>{!isEdit ? vehicle.year : <input value={inputState.year}  onChange={handleChange} name="year" placeholder={vehicle.year}></input>}</td>
           </tr>
           <tr>
             <th>Ext. Color</th>
-            <td>{!isEdit ? vehicle.exteriorColor : <input value={inputExteriorColor} placeholder={vehicle.exteriorColor}></input>}</td>
+            <td>{!isEdit ? vehicle.exteriorColor : <input value={inputState.exteriorColor}  onChange={handleChange} name="exteriorColor" placeholder={vehicle.exteriorColor}></input>}</td>
           </tr>
           <tr>
             <th>Int. Color</th>
-            <td>{!isEdit ? vehicle.interiorColor : <input value={inputInteriorColor} placeholder={vehicle.interiorColor}></input>}</td>
+            <td>{!isEdit ? vehicle.interiorColor : <input value={inputState.interiorColor}  onChange={handleChange} name="interiorColor" placeholder={vehicle.interiorColor}></input>}</td>
           </tr>
           <tr>
             <th>Mileage</th>
-            <td>{!isEdit ? vehicle.mileage : <input value={inputMileage} placeholder={vehicle.mileage}></input>}</td>
+            <td>{!isEdit ? vehicle.mileage : <input value={inputState.mileage}  onChange={handleChange} name="mileage" placeholder={vehicle.mileage}></input>}</td>
           </tr>
           <tr>
             <th>VIN</th>
-            <td>{!isEdit ? vehicle.VIN : <input value={inputVin} placeholder={vehicle.VIN}></input>}</td>
+            <td>{!isEdit ? vehicle.VIN : <input value={inputState.vin}  onChange={handleChange} name="vin" placeholder={vehicle.VIN}></input>}</td>
           </tr>
           <tr>
             <th>Stock #</th>
-            <td>{!isEdit ? vehicle.stockNumber : <input value={inputStockNumber} placeholder={vehicle.stockNumber}></input>}</td>
+            <td>{!isEdit ? vehicle.stockNumber : <input value={inputState.stockNumber}  onChange={handleChange} name="stockNumber" placeholder={vehicle.stockNumber}></input>}</td>
           </tr>
           <tr>
             <th>Retail Price</th>
-            <td>{!isEdit ? vehicle.retailPrice : <input value={inputRetailPrice} placeholder={vehicle.retailPrice}></input>}</td>
+            <td>{!isEdit ? vehicle.retailPrice : <input value={inputState.retailPrice}  onChange={handleChange} name="retailPrice" placeholder={vehicle.retailPrice}></input>}</td>
           </tr>
           <tr>
             <th>In Stock</th>
-            <td>{!isEdit ? `${vehicle.inStock}` : <input value={inputInStock} placeholder={`${vehicle.inStock}`}></input>}</td>
+            <td>{!isEdit ? `${vehicle.inStock}` : <input checked={inputState.inStock}  onChange={handleChange} name="inStock" placeholder={`${vehicle.inStock}`} type="checkbox"></input>}</td>
           </tr>
           <tr>
             <th>Featured</th>
-            <td>{!isEdit ? `${vehicle.isFeatured}` : <input value={inputIsFeatured} placeholder={`${vehicle.isFeatured}`}></input>}</td>
+            <td>{!isEdit ? `${vehicle.isFeatured}` : <input checked={inputState.isFeatured}  onChange={handleChange} name="isFeatured" placeholder={`${vehicle.isFeatured}`} type="checkbox"></input>}</td>
           </tr>
         </table>
       </div>
