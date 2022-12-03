@@ -1,4 +1,5 @@
 import { useOutletContext} from 'react-router-dom';
+import DeleteReview from './DeleteReview';
 
 const Reviews = () => {
   const {reviewObj: [{reviews}, setReviewData]} = useOutletContext();
@@ -17,6 +18,7 @@ const Reviews = () => {
             <th>imgUrl</th>
             <th>Preivew Image</th>
             <th>Edit</th>
+            <th>Delete</th>
           </tr>
         </thead>
         <tbody>
@@ -32,6 +34,7 @@ const Reviews = () => {
                   <td>{review.imgUrl}</td>
                   <td><button>Preview</button></td>
                   <td><button>Edit</button></td>
+                  <td><DeleteReview /></td>
                 </tr>
 
               )

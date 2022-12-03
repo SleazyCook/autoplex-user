@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
-import { useOutletContext, useParams } from 'react-router-dom'
+import { useOutletContext, useParams } from 'react-router-dom';
+import DeletePhoto from './DeletePhoto';
 
 const PhotoDetails = () => {
   const {photoObj: [photoData, setPhotoData]} = useOutletContext();
@@ -91,6 +92,7 @@ const PhotoDetails = () => {
               <th>vehicleId</th>
               <th>alt</th>
               <th>url</th>
+              <th>delete</th>
             </tr>
           </thead>
           <tbody>
@@ -103,6 +105,8 @@ const PhotoDetails = () => {
               <td>{!isEdit ? photo.alt : <input value={inputState.alt} onChange={handleChange} name="alt" placeholder={photo.alt}></input>}</td>
 
               <td>{!isEdit ? photo.url : <input value={inputState.url} onChange={handleChange} name="url" placeholder={photo.url}></input>}</td>
+
+              <td><DeletePhoto /></td>
 
             </tr>
           </tbody>
