@@ -6,7 +6,7 @@ const AddVehicle = () => {
   const navigate = useNavigate();
   // database field variables
   const [inputState, setInputState] = useState({
-    typeId: "",
+    typeId: 0,
     make: "",
     model: "",
     submodel: "",

@@ -3,7 +3,7 @@ import { useNavigate, useOutletContext } from 'react-router-dom';
 const DeleteReview = () => {
   const {reviewData: [reviewData, setReviewData]} = useOutletContext();
   const navigate = useNavigate();
-  async function deleteThisPhoto (event) {
+  async function deleteThisReview (event) {
     event.preventDefault();
     try {
       const response = await fetch (`
@@ -29,7 +29,7 @@ const DeleteReview = () => {
   
   return (
     <div>
-      <button>Delete</button>
+      <button onClick={deleteThisReview}>Delete</button>
     </div>
   )
 };

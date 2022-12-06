@@ -6,12 +6,12 @@ const AddPhoto = () => {
   const navigate = useNavigate();
 
   const [inputState, setInputState] = useState({
-    vehicleId,
-    alt,
-    url
+    vehicleId: 0,
+    alt: "",
+    url: ""
   });
 
-  console.log('what is up, lets an a photo together');
+  console.log('what is up, lets add a photo together');
 
   async function addNewPhoto (event) {
     event.preventDefault();

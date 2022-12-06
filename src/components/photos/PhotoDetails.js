@@ -10,9 +10,9 @@ const PhotoDetails = () => {
   const [isEdit, setIsEdit] = useState(false);
 
   const [inputState, setInputState] = useState({
-    vehicleId,
-    alt,
-    url
+    vehicleId: 0,
+    alt: "",
+    url: ""
   });
 
   function handleEdit(id) {
@@ -84,7 +84,6 @@ const PhotoDetails = () => {
         <br />
         {!isEdit ? <button onClick={handleEdit}>Edit</button> : <button onClick={submitEdit}>Submit Changes</button>}
         <br />
-        <button>Delete</button>
         <table>
           <thead>
             <tr>

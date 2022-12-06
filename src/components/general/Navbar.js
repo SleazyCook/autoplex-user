@@ -14,6 +14,8 @@ const Navbar = () => {
 
         <Link to="reviews">Reviews</Link>
 
+        <Link to="settings">Settings</Link>
+
       </nav>
     </div>
   )

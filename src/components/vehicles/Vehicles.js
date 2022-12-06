@@ -3,7 +3,7 @@ import { useOutletContext, Link } from "react-router-dom";
 const Vehicles = () => {
   const {vehicleObj: [{vehicles}, setVehicleData]} = useOutletContext();
 
-  console.log(vehicles)
+  // console.log(vehicles)
 
   return (
     <div>

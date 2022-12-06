@@ -6,6 +6,7 @@ import ErrorPage from './components/general/ErrorPage';
 import Home from './components/general/Home';
 import Login from './components/general/Login';
 import Register from './components/general/Register';
+import Settings from './components/general/Settings';
 
 import Vehicles from './components/vehicles/Vehicles';
 import VehicleDetails from './components/vehicles/VehicleDetails';
@@ -36,6 +37,10 @@ export const router = createBrowserRouter([
       {
         index: true,
         element: <Home />
+      },
+      {
+        path: "settings",
+        element: <Settings />
       },
 
 

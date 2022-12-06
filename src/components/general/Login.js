@@ -1,11 +1,12 @@
 import { useState } from 'react';
-import { useOutletContext, Link } from 'react-router-dom';
+import { useOutletContext, Link, useNavigate } from 'react-router-dom';
 
 const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const {profileObj: [profileData, setProfileData]} = useOutletContext();
   const {loggedInObj: [loggedIn, setLoggedIn]} = useOutletContext();
+  const navigate = useNavigate();
 
   async function loginFormSubmitHandler(event) {
     event.preventDefault();
@@ -29,7 +30,7 @@ const Login = () => {
       if (data.user) {
         setLoggedIn(true);
         localStorage.setItem("token", data.token);
-        // fetchUserInfo();
+        navigate('/inventory')
       }
     } catch (error) {
       console.log(error);
