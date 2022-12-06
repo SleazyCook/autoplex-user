@@ -42,6 +42,10 @@ export const router = createBrowserRouter([
         path: "settings",
         element: <Settings />
       },
+      {
+        path: "register",
+        element: <Register />
+      },
 
 
       // Vehicle Inventory

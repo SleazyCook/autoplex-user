@@ -10,7 +10,7 @@ const Vehicles = () => {
       <p> Table for vehicles </p>
       <Link to="./add-new"><button>Add Vehicle</button></Link>
       <p>Sort by (cell-forward/backward)</p>
-      <p>Do ADD VEHICLE and EDIT VEHICLE look the same?</p>
+      <p>COMPLETE INVENTORY HISTORY, ACTIVE AND INACTIVE</p>
       <table>
         <thead>
           <tr>

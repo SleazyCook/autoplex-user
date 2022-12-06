@@ -52,6 +52,8 @@ const App = () => {
     }
     fetchPhotoData();
 
+    console.log(loggedIn)
+
     async function fetchReviewData() {
       try {
         const response = await fetch(
